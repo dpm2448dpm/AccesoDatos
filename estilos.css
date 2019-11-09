@@ -1,0 +1,199 @@
+.size-img {
+  width: 250px;
+  height: 250px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+ul{
+  position: relative;
+  list-style: none;
+}
+
+
+ul li ul {
+  display: none;
+  -moz-position:absolute;
+  position: absolute;
+  left: 160px;
+  top:-1px;
+  z-index: 5;
+}
+/*desplegue tabla pedidos*/
+.contenedor_principal{
+  position: relative;
+}
+.contenedor_mispedidos{
+  position: relative;
+}
+.mispedidos{
+  position: relative;
+}
+.contenedor_mispedidos ul{
+  list-style: none;
+  display:flex;
+
+}
+.contenedor_mispedidos ul ul{
+  display: none;
+  position: relative;
+  left:-33px;
+}
+.tabla2 td{
+  padding: 25px;
+}
+
+
+
+.letras-negras {
+  color: black;
+}
+
+.productos td {
+  width: 300px;
+  height: 400px;
+  background-color: white;
+  border: 1px solid black;
+  margin: 15px;
+  border-radius: 5px;
+  padding: 2%;
+}
+
+li:hover {
+  background-color: whitesmoke;
+  color: black;
+  text-decoration: none;
+}
+
+.ocultar {
+  opacity: 0;
+}
+
+table {
+  padding: 15px;
+  border-collapse: separate;
+  margin-left: 2%;
+}
+
+.minimo{
+  min-width: 150px;
+  
+}
+.margen-top {
+  margin-top: 3%;
+}
+
+.h-personal {
+  height: 95%;
+}
+
+.size-input{
+  width: 80px;
+}
+
+.bg-black {
+  background-color: #202020;
+}
+
+.catalogo {
+  display: block;
+  float: left;
+}
+.imagen-muestra {
+  width: 120px;
+  height: 120px;
+  margin-left: 28%;
+}
+.registro{
+  margin-left: 5px;
+}
+.precio {
+  float: left;
+  color: black;
+  font: 18px bold arial;
+}
+.iconos {
+  margin-left: 10%;
+  float: left;
+  width: 40px;
+  height: 40px;
+}
+.letras-blancas {
+  color: white;
+}
+.borde-blanco {
+  border: 1px solid white;
+}
+.tabla{
+  position: relative;
+  margin: 5px;
+  padding: 5px;
+  width: 600px;
+  height: 400px;
+}
+
+/**Footer*/
+footer {
+ 
+  position: relative;
+  height: 5%;
+  text-align: center;
+  font-size: 14px;
+  font-family: sans-serif;
+  color: black;
+}
+footer #cont {
+  margin: 20px;
+  float: left;
+  width: 800px;
+}
+footer p {
+  margin-bottom: 10px;
+  padding: 4px;
+}
+.fotoredes img {
+  width: 30px;
+  transition: border 2s;
+  -webkit-transition: border 0.25s;
+}
+.fotoredes1 img {
+  width: 30px;
+  transition: border 2s;
+  -webkit-transition: border 0.25s;
+}
+/*BORDE SOBRE BOTONES*/
+.fotoredes1 img:hover {
+  border: 2px solid grey;
+  border-radius: 50px;
+}
+.fotoredes img:hover {
+  border: 2px solid grey;
+  border-radius: 10px;
+}
+
+footer table td {
+  padding: 15px;
+  margin: 5;
+  color: white;
+}
+footer table {
+  margin-top: 10px;
+}
+
+.pequeña{
+  width: 20px;
+  height: 20px;
+}
+.indice{
+  color: #00dbeb;
+  font-size: 18px;
+}
+#tabla_productos td{
+  padding: 1%;
+  
+}
+/*quitar spinner inputs number*/
+

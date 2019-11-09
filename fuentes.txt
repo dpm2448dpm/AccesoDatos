@@ -1,0 +1,8 @@
+https://stackoverflow.com/questions/5353905/how-do-i-store-all-results-from-an-sql-query-in-a-multidimensional-array
+
+#### Menu Categorias ####
+no hay referencias.
+## Carga de elementos ###
+no hay referencias.
+## Alta Usuarios ##
+-Combobox Con ajax : https://www.youtube.com/watch?v=xq04F4hbZmo

@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="estilos.css" />
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 
   <title>Pagina</title>
 </head>
@@ -52,7 +53,7 @@
             include 'misPedidos.php';
           } elseif ($_GET['registro'] == 5) {
             include 'devoluciones.php';
-           } else {
+          } else {
             include 'main.php';
           }
         } else {
@@ -78,3 +79,15 @@
 </body>
 
 </html>
+<?php
+if (isset($_SESSION['admin'])) {
+  echo "
+<script>
+$.alert({
+  title: 'Alert!',
+  content: 'Simple alert!',
+});
+</script>
+";
+}
+?>

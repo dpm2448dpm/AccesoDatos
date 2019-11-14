@@ -2,6 +2,11 @@
   <h2>Alta de Productos</h2>
 
   <?php
+session_start();
+if(isset($_SESSION['admin'])){
+  if($_SESSION['admin']==TRUE){
+
+  
 
   include "conexion.php";
 
@@ -161,4 +166,12 @@ if ($_POST) {
   $mysqli->query("insert into producto values ('" . $referencia . "','" . $nombre . "','" . $stock . "','" . $precio . "','" . $oferta . "','" . $novedad . "','" . $actual . "','" . $fabricacion . "','" . $descripcion . "','" . $imagen . "'," . $categoria . "," . $percio_oferta . ")");
   header('location: http://localhost/DarioPerezMartinPHP/index.php?registro=2');
 }
+  }else{
+    echo "No puede acceder a este sitio sin ser administrador";
+  }
+
+}else{
+  echo "No puede acceder a este sitio sin ser administrador";
+}
+
 ?>

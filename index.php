@@ -30,7 +30,37 @@
 
   include 'navbar.php';
   ?>
+  <div class="modal">
+    <div class="contenedor-modal">
+      <table id="tabla-modal">
+        <h2>Pedidos Pendientes de Gestión</h2>
+        <?php
+        include 'conexion.php';
+        $ejecutar  = 'select pedidos.id_pedido as id, estados.estado as estado from pedidos,estados,estados_pedidos where pedidos.id_pedido = estados_pedidos.id_pedido and estados.id_estado = estados_pedidos.id_estado and estados.estado=\'PENDIENTE_ENVIO\'';
+        $intermedia = $mysqli->query($ejecutar);
+        while ($row = $intermedia->fetch_assoc()) {
+          ?>
+          <tr>
+            <td>Pedido:</td>
+            <td id="estado<?php echo $row['id']; ?>"><strong> ID = <?php echo $row['id']; ?></strong></td>
 
+            <td>
+              <input  id="enviado<?php echo $row['id']; ?>" type="radio" name="enviado<?php echo $row['id']; ?>" value="<?php echo $row['id']; ?>">
+              <label for="enviado">Enviado</label>
+              <br>
+              <input id="nosend" type="radio" name="enviado<?php echo $row['id']; ?>" value="No Enviado" checked="checked">
+              <label for="noEnviado">No Enviado</label>
+            </td>
+          </tr>
+        <?php
+        }
+        ?>
+      </table>
+
+    </div>
+    <button id="cerrar-modal" class="btn btn-info">Cerrar</button>
+    <button id="actualizar-estado" class="btn btn-info">Actualizar</button>
+  </div>
   <div class="container-fluid">
     <div class="row">
       <div class="col-2 bg-dark">
@@ -80,14 +110,40 @@
 
 </html>
 <?php
-if (isset($_SESSION['admin'])) {
-  echo "
+if (isset($_SESSION['admin'])/* && !isset($_SESSION['cerrado'])*/) {
+  echo '
 <script>
-$.alert({
-  title: 'Alert!',
-  content: 'Simple alert!',
-});
+$(".modal").show();
 </script>
-";
+';
+//esto es para que no salga todo el rato, asi solo sale una vez.
+$_SESSION['cerrado']="cerrado";
 }
 ?>
+<script>
+  $("#cerrar-modal").click(function(){
+    $(".modal").hide();
+  });
+  
+  $("#actualizar-estado").click(function(){
+    var ids = [];
+    $("[id*=enviado]").each(function(){
+      if($(this).is(":checked")){
+       var valor = $(this).val();
+       ids.push(valor);
+      }
+    });
+    var datos = {
+      id : JSON.stringify(ids)
+    };
+   
+    $.ajax({
+      type: 'post',
+      data: datos,
+      url: 'actualizarEstados.php',
+      success:function(salida){
+        alert(salida);
+      }
+    });
+  });
+  </script>

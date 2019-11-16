@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 08-11-2019 a las 20:40:29
+-- Tiempo de generación: 16-11-2019 a las 12:35:11
 -- Versión del servidor: 5.6.35
 -- Versión de PHP: 7.1.0
 
@@ -84,6 +84,45 @@ INSERT INTO `categorias` (`id_categoria`, `nombre_categoria`, `id_padre`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `estados`
+--
+
+CREATE TABLE `estados` (
+  `id_estado` int(11) DEFAULT NULL,
+  `estado` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `estados`
+--
+
+INSERT INTO `estados` (`id_estado`, `estado`) VALUES
+(1, 'PENDIENTE_ENVIO'),
+(2, 'ENVIADO');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estados_pedidos`
+--
+
+CREATE TABLE `estados_pedidos` (
+  `id_pedido` int(11) NOT NULL DEFAULT '0',
+  `id_estado` int(11) NOT NULL DEFAULT '0',
+  `fecha` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `estados_pedidos`
+--
+
+INSERT INTO `estados_pedidos` (`id_pedido`, `id_estado`, `fecha`) VALUES
+(17, 1, NULL),
+(18, 2, '2019-11-16 12:43:09');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `linea_pedido`
 --
 
@@ -107,7 +146,8 @@ INSERT INTO `linea_pedido` (`id_linea`, `id_producto`, `nombre`, `cantidad`, `pr
 (5, 1, 'sdf', 2, 123, 369, 15),
 (6, 1, 'sdf', 1, 123, 369, 16),
 (7, 4, '123', 2, 786, 1572, 16),
-(8, 2, 'sdf1234', 1, 2454, 2454, 16);
+(8, 4, '123', 1, 786, 786, 17),
+(9, 4, '123', 1, 786, 786, 18);
 
 -- --------------------------------------------------------
 
@@ -8269,7 +8309,9 @@ CREATE TABLE `pedidos` (
 
 INSERT INTO `pedidos` (`id_pedido`, `fecha`, `precio`, `usuario`) VALUES
 (15, '2019-10-01', 2172, 'dpm'),
-(16, '2019-10-03', 4395, 'dpm');
+(16, '2019-10-03', 4395, 'dpm'),
+(17, '2019-11-14', 786, 'dpm'),
+(18, '2019-11-16', 786, 'dpm');
 
 -- --------------------------------------------------------
 
@@ -8301,7 +8343,7 @@ INSERT INTO `producto` (`referencia`, `nombre`, `stock`, `precio`, `oferta`, `no
 (1, 'sdf', 1235117, 123, 0, 1, '2019-10-10', '1970-01-01', '123asfdfasdcasdcasd asdfasdf asdfa sdfasdf ', 'telecaster1.png', 10, 0, 2),
 (2, 'sdf1234', 11, 2454, 1, 1, '2019-10-10', '1970-01-01', '123asfdfasdcasdcasd asdfasdf asdfa1234123 sdfasdf ', 'sg1.jpg', 11, 2000, 0),
 (3, 'sdf12', 25, 850, 1, 0, '2019-10-10', '1970-01-01', '123asfdfasdcasdcasd asdfasdf asdfa1234123 sdfasdf ', 'stratocaster1.jpg', 11, 500, 0),
-(4, '123', -1, 786, 1, 0, '2019-10-10', '1970-01-01', '123asfdfasdcasdcasd asdfasdf asdfa1234123 sdfasdf ', 'explorer.jpg', 10, 650, 1),
+(4, '123', -3, 786, 1, 0, '2019-10-10', '1970-01-01', '123asfdfasdcasdcasd asdfasdf asdfa1234123 sdfasdf ', 'explorer.jpg', 10, 650, 1),
 (5, 'qerqwe', 24, 231, 0, 0, '2019-10-11', '1970-01-01', 'qwerqw', 'sg2.png', 11, 0, 0),
 (7, 'qerqwe', 7, 231, 0, 1, '2019-10-11', '1970-01-01', 'qwerqw', 'sg2.png', 11, 0, 0),
 (8, 'qerq', 3123, 231, 0, 1, '2019-10-11', '1970-01-01', 'qwerqw', 'sg1.jpg', 11, 0, 0),
@@ -8395,16 +8437,17 @@ CREATE TABLE `usuarios` (
   `fecha_nacimiento` date NOT NULL,
   `direccion` varchar(150) NOT NULL,
   `id_provincia` varchar(50) NOT NULL,
-  `id_localidad` varchar(50) NOT NULL
+  `id_localidad` varchar(50) NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`user`, `pass`, `dni`, `nombre`, `apellido1`, `apellido2`, `email`, `fecha_nacimiento`, `direccion`, `id_provincia`, `id_localidad`) VALUES
-('123', '23', '12312332H', '123', '123', '123', '2019-10-16', '0000-00-00', '123@fasas.asdf', '2', '100'),
-('dpm', '123', '45781296A', 'jacinto', 'marroqui', 'fascete', 'sdfa@gmail.com', '1992-02-01', 'la sejismunda', '2', '291');
+INSERT INTO `usuarios` (`user`, `pass`, `dni`, `nombre`, `apellido1`, `apellido2`, `email`, `fecha_nacimiento`, `direccion`, `id_provincia`, `id_localidad`, `admin`) VALUES
+('123', '23', '12312332H', '123', '123', '123', '2019-10-16', '0000-00-00', '123@fasas.asdf', '2', '100', 0),
+('dpm', '123', '45781296A', 'jacinto', 'marroqui', 'fascete', 'sdfa@gmail.com', '1992-02-01', 'la sejismunda', '2', '291', 1);
 
 --
 -- Índices para tablas volcadas
@@ -8415,6 +8458,12 @@ INSERT INTO `usuarios` (`user`, `pass`, `dni`, `nombre`, `apellido1`, `apellido2
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id_categoria`);
+
+--
+-- Indices de la tabla `estados_pedidos`
+--
+ALTER TABLE `estados_pedidos`
+  ADD PRIMARY KEY (`id_pedido`,`id_estado`);
 
 --
 -- Indices de la tabla `linea_pedido`
@@ -8454,7 +8503,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `linea_pedido`
 --
 ALTER TABLE `linea_pedido`
-  MODIFY `id_linea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_linea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `municipios`
 --
@@ -8464,7 +8513,7 @@ ALTER TABLE `municipios`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

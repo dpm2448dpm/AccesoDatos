@@ -195,3 +195,23 @@ footer table {
   padding: 1%;
   
 }
+
+.modal{
+  padding: 10px;
+  top:40px;
+  left:25%;
+  position: absolute;
+  width: 50%;
+  height: 70%;
+  display: none;
+  border-radius: 5px;
+  background-color: white;
+  border: 2px solid black;
+}
+.contenedor-modal{
+  height: 85%;
+  width: 90%;
+}
+#tabla-modal td{
+padding: 15px;
+}

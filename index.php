@@ -79,15 +79,16 @@
 </body>
 
 </html>
+<!--modificar para que solo lo tire una vez-->
 <?php
 if (isset($_SESSION['admin'])) {
-  echo "
+?>
 <script>
 $.alert({
-  title: 'Alert!',
-  content: 'Simple alert!',
+  title: 'Estado Pedidos',
+  content: '<input type="text">',
 });
 </script>
-";
+<?php
 }
 ?>

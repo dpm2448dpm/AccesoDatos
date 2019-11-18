@@ -31,8 +31,9 @@ if (!isset($_SESSION['usuario'])) {
   <div class="card p-3 mt-2 bg-secondary border-info">
     <h4>Bienvenido <?php echo $_SESSION['usuario']; ?></h4>
     <br>
-    <a href="index.php?registro=4" class="mb-3"><button id="mispedidos" type="button" class="btn btn-info">Mis pedidos</button></a>
-    <a href="index.php?registro=5"><button id="devoluciones" type="button" class="btn btn-dark">Devoluciones</button></a>
+    <a href="index.php?registro=4" class="mb-2"><button id="mispedidos" type="button" class="btn btn-info">Mis pedidos</button></a>
+    <a href="index.php?registro=5" class="mb-2"><button id="devoluciones" type="button" class="btn btn-dark">Devoluciones</button></a>
+    <a href="index.php?registro=6" class="mb-2"><button id="ultimosPedidos" type="button" class="btn btn-light">Mis Ultimos Pedidos</button></a>
     <button id="logout" type="submit" class="btn btn-secondary">Cerrar Sesion </button>
   </div>
 <?php

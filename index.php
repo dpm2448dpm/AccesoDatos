@@ -83,6 +83,8 @@
             include 'misPedidos.php';
           } elseif ($_GET['registro'] == 5) {
             include 'devoluciones.php';
+          }elseif($_GET['registro']==6){
+            include 'misUltimosPedidos.php';
           } else {
             include 'main.php';
           }
@@ -111,7 +113,7 @@
 </html>
 <!--modificar para que solo lo tire una vez-->
 <?php
-if (isset($_SESSION['admin'])/* && !isset($_SESSION['cerrado'])*/) {
+if (isset($_SESSION['admin']) && !isset($_SESSION['cerrado'])) {
   echo '
 <script>
 $(".modal").show();

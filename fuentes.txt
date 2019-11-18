@@ -6,3 +6,7 @@ no hay referencias.
 no hay referencias.
 ## Alta Usuarios ##
 -Combobox Con ajax : https://www.youtube.com/watch?v=xq04F4hbZmo
+## calculo de diferencia entre fechas ##
+https://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html#function_timediff
+## no hay mas busquedas##
+

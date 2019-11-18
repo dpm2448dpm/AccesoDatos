@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header contenedor_principal">
-        <h4>Detalle del Carrito</h4>
+        <h4>Mis Pedidos</h4>
     </div>
     <div class="contenedor_mispedidos">
         <!--meter una puta tabla -->

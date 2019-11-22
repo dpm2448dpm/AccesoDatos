@@ -40,7 +40,9 @@ if (!isset($_SESSION['usuario'])) {
     }
     
 
-    
+    unset($_SESSION['productos']);
+    unset($_SESSION['precio']);
+    unset($_SESSION['cantidad']);
     $salida = "Compra realizada con exito";
     echo $salida;
 

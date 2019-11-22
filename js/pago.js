@@ -48,6 +48,7 @@ $("#pagar").click(function() {
     url: 'compra.php',
     success: function(vuelta){
         alert(vuelta);
+        window.location.href = "/AccesoDatos/index.php";
     }
   });
 });

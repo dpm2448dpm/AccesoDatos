@@ -146,6 +146,7 @@ $_SESSION['cerrado']="cerrado";
       url: 'actualizarEstados.php',
       success:function(salida){
         alert(salida);
+        $(".modal").hide();
       }
     });
   });

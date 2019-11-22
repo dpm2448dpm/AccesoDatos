@@ -13,7 +13,7 @@ if (isset($_SESSION['productos'])) {
 
 ?>
 <nav class="navbar navbar-dark bg-black">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" href="http://localhost/AccesoDatos/index.php">
     <img src="imagenes/tienda.jpg" width="40" height="40" class="d-inline-block align-top" alt="" />
     MCStore
   </a>

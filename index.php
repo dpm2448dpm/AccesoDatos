@@ -86,10 +86,15 @@
           }elseif($_GET['registro']==6){
             include 'misUltimosPedidos.php';
           } else {
-            include 'main.php';
+            include 'principal.php';
           }
         } else {
-          include 'main.php';
+          if(isset($_GET['categoria'])){
+            include 'main.php';
+          }else{
+            include 'principal.php';
+          }
+          
         }
 
 

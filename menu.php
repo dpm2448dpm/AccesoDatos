@@ -45,7 +45,4 @@ $consulta2 = $mysqli->query("select * from categorias where id_padre is NULL");
     }
 
   });
-  /*$(this).click(function(){
-     alert($(this).attr('class'));
-    });*/
 </script>

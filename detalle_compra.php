@@ -51,10 +51,8 @@
 
       </tr>
     </table>
-    <button type="button" class="btn btn-light"><strong>Seguir Comprando</strong></button>
+    <button id="seguir" type="button" class="btn btn-light"><strong>Seguir Comprando</strong></button>
     <button id="pagar" type="button" class="btn btn-info">Pagar</button>
-    <script src="js/ajaxCantidades.js">
-    </script>
     <script src="js/pago.js"></script>
   </div>
 </div>

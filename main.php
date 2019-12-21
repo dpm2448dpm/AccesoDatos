@@ -1,3 +1,11 @@
+<div class="modal2">
+  <div class="contenedor-modal">
+
+    <h2>No se pueden añadir más unidades de este producto</h2>
+
+  </div>
+  <button id="cerrar-modal2" class="btn btn-info">Cerrar</button>
+</div>
 <table class="productos">
 
   <?php
@@ -6,9 +14,16 @@
     $categoria = $_GET['categoria'];
     include 'conexion.php';
     if ($categoria == "bstock") {
-      $consulta = $mysqli->query("select * from producto where cantidad_devueltos not in (0)");
+      $consulta = $mysqli->query("select * from producto where cantidad_devueltos not in (0) limit 9");
+      //Para saber si estamos en los prouctos del bstock
+      $_SESSION['tipo'] = "bstock";
+    } elseif ($categoria == "busqueda") {
+      $valor = $_GET['valor'];
+      $_SESSION['tipo'] = "normal";
+      $consulta = $mysqli->query("select * from producto where nombre like '%%$valor%%' limit 9");
     } else {
-      $consulta = $mysqli->query("select * from producto where id_categoria = $categoria");
+      $consulta = $mysqli->query("select * from producto where id_categoria = $categoria limit 9");
+      $_SESSION['tipo'] = "normal";
     }
 
     $i = 0;
@@ -83,21 +98,39 @@
       ?>
 </table>
 <script>
+  $("#cerrar-modal2").click(function() {
+    $(".modal2").hide();
+  });
   $('.catalogo').click(function() {
     var id = $(this).attr("id");
     var cantidad = Number($('#unidades').html());
     var precio1 = Number($("#precio").html());
-    $.post("getValorProducto.php", {
-      id: id,
-      cantidad: cantidad,
-      precio1: precio1
-    }, function(data) {
-      uds = Number($("#unidades").html());
-      uds += 1;
-      precio = Number($("#precio").html());
-      precio += Number(data);
-      $("#unidades").html(uds);
-      $("#precio").html(precio);
+    
+    var datos = {
+      "id": id,
+      "cantidad": cantidad,
+      "precio1": precio1
+    };
+   var uds,precio;
+    $.ajax({
+      type: "post",
+      data: datos,
+      url: 'getValorProducto.php',
+      success: function(salida) {
+    
+        if (salida == -1) {
+          $(".modal2").show();
+        } else {
+          
+          uds = Number($("#unidades").html());
+          uds += 1;
+          precio = Number($("#precio").html());
+          precio += Number(salida);
+          $("#unidades").html(uds);
+          $("#precio").html(precio);
+        }
+      }
+
     });
   });
 </script>

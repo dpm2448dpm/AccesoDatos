@@ -17,6 +17,7 @@
 
 <body>
   <?php
+  error_reporting(0);
   session_start();
   if (!isset($_SESSION['productos'])) {
     $_SESSION['productos'] = [];
@@ -26,6 +27,9 @@
   }
   if (!isset($_SESSION['precio'])) {
     $_SESSION['precio'] = 0;
+  }
+  if (!isset($_SESSION['tipo'])) {
+    $_SESSION['tipo'] = "";
   }
 
   include 'navbar.php';
@@ -45,7 +49,7 @@
             <td id="estado<?php echo $row['id']; ?>"><strong> ID = <?php echo $row['id']; ?></strong></td>
 
             <td>
-              <input  id="enviado<?php echo $row['id']; ?>" type="radio" name="enviado<?php echo $row['id']; ?>" value="<?php echo $row['id']; ?>">
+              <input id="enviado<?php echo $row['id']; ?>" type="radio" name="enviado<?php echo $row['id']; ?>" value="<?php echo $row['id']; ?>">
               <label for="enviado">Enviado</label>
               <br>
               <input id="nosend" type="radio" name="enviado<?php echo $row['id']; ?>" value="No Enviado" checked="checked">
@@ -83,18 +87,17 @@
             include 'misPedidos.php';
           } elseif ($_GET['registro'] == 5) {
             include 'devoluciones.php';
-          }elseif($_GET['registro']==6){
+          } elseif ($_GET['registro'] == 6) {
             include 'misUltimosPedidos.php';
           } else {
             include 'principal.php';
           }
         } else {
-          if(isset($_GET['categoria'])){
+          if (isset($_GET['categoria'])) {
             include 'main.php';
-          }else{
+          } else {
             include 'principal.php';
           }
-          
         }
 
 
@@ -124,35 +127,35 @@ if (isset($_SESSION['admin']) && !isset($_SESSION['cerrado'])) {
 $(".modal").show();
 </script>
 ';
-//esto es para que no salga todo el rato, asi solo sale una vez.
-$_SESSION['cerrado']="cerrado";
+  //esto es para que no salga todo el rato, asi solo sale una vez.
+  $_SESSION['cerrado'] = "cerrado";
 }
 ?>
 <script>
-  $("#cerrar-modal").click(function(){
+  $("#cerrar-modal").click(function() {
     $(".modal").hide();
   });
-  
-  $("#actualizar-estado").click(function(){
+
+  $("#actualizar-estado").click(function() {
     var ids = [];
-    $("[id*=enviado]").each(function(){
-      if($(this).is(":checked")){
-       var valor = $(this).val();
-       ids.push(valor);
+    $("[id*=enviado]").each(function() {
+      if ($(this).is(":checked")) {
+        var valor = $(this).val();
+        ids.push(valor);
       }
     });
     var datos = {
-      id : JSON.stringify(ids)
+      id: JSON.stringify(ids)
     };
-   
+
     $.ajax({
       type: 'post',
       data: datos,
       url: 'actualizarEstados.php',
-      success:function(salida){
+      success: function(salida) {
         alert(salida);
         $(".modal").hide();
       }
     });
   });
-  </script>
+</script>

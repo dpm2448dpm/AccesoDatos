@@ -17,7 +17,7 @@ style="width: 18rem;"
 </div>
 
 
-<img src="imagenes/<?php echo $producto['imagen'] ?>" class="card-img-top" alt="..." />
+<img src="upload/<?php echo $producto['imagen'] ?>" class="card-img-top" alt="..." />
 <div class="card-body text-center">
   
   <h6 class="card-title font-weight-bolder text-center">

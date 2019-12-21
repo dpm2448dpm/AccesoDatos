@@ -9,11 +9,11 @@ if (!isset($_SESSION['usuario'])) {
     <form>
       <div class="form-group">
         <label for="exampleInputEmail1">User</label>
-        <input type="text" class="form-control" id="user" aria-describedby="emailHelp" placeholder="Enter Username" />
+        <input type="text" class="form-control" id="user" aria-describedby="emailHelp" autocomplete = "off" placeholder="Enter Username" />
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Contraseña</label>
-        <input type="password" class="form-control" id="pass_user" placeholder="Password" />
+        <input type="password" class="form-control" autocomplete = "off" id="pass_user" placeholder="Password" />
       </div>
       <div class="form-group form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1" />

@@ -11,4 +11,5 @@ if ($db->connect_error) {
     die("Connection failed: " . $db->connect_error);
 }
 */
+$mysqli ->set_charset("utf8");
 ?>

@@ -6,6 +6,7 @@ $('#login').click(function (e) {
         "user":user,
         "pass":pass
     }
+  
     
     $.ajax({
         type: 'post',

@@ -6,7 +6,7 @@ $resultado = $mysqli->query($query);
 ?>
 <script src="js/codigoAjax.js"></script>
 
-<form class="mt-3" method="post" action="formulario_registro.php">
+<form class="mt-3" method="post" action="">
  
   <h2>Alta Cliente</h2>
   <div class="form-row">
@@ -100,7 +100,7 @@ if (isset($_POST)) {
   $provincia = $_POST['provincia'];
   $localidad = $_POST['localidad'];
 
-  $insert = "insert into usuarios values ('".$user."','".$pass."','".$dni."','".$nombre."','".$apel1."','".$apel2."','".$email."','".$fecha."','".$direccion."','".$provincia."','".$localidad."')";
+  $insert = "insert into usuarios values ('".$user."','".$pass."','".$dni."','".$nombre."','".$apel1."','".$apel2."','".$email."','".$fecha."','".$direccion."','".$provincia."','".$localidad."',0)";
   $mysqli -> query($insert);
   
 }

@@ -14,7 +14,7 @@ $imagen = $row['imagen'];
   </div>
   <div class="card-body">
     <h5 class="card-title letras-blancas"><?php echo $nombre?></h5>
-    <img src="imagenes/<?php echo $imagen;?>" class="card-img-top" alt="..." />
+    <img src="upload/<?php echo $imagen;?>" class="card-img-top" alt="..." />
     <p class="card-text letras-blancas">
       <?php echo $descripcion;?>
     </p>
